@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@400;700&family=Ubuntu:wght@500&display=swap');
+.app {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #000;
+  font-family: 'Encode Sans Expanded', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
+} 
+
+.app__video {
+  display: flex;
+  align-items: center;
+}
+
+.app__canvas {
+  position: absolute;
+  top: 0px;
+  color: #1DB954;
+}
