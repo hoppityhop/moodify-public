@@ -39,47 +39,7 @@ function App() {
       if (!params.has("code")) {
          loginProcess.login();
       } else {
-         var code = params.get("code");
-         var state = params.get("state");
-         console.log("code", code);
-         console.log("state", state);
-
-         if (state === null) {
-            console.log("State is null");
-         } else {
-            fetch("https://accounts.spotify.com/api/token", {
-               method: "POST",
-               headers: {
-                  "Content-Type": "application/x-www-form-urlencoded",
-                  Authorization:
-                     "Basic " + btoa(CLIENT_ID + ":" + CLIENT_SECRET),
-               },
-               body: new URLSearchParams({
-                  code: code,
-                  redirect_uri: redirect_uri,
-                  grant_type: "authorization_code",
-               }),
-            })
-               .then((response) => response.json())
-               .then((data) => console.log(data))
-               .catch((error) => console.error("Error:", error));
-
-            // var authOptions = {
-            //    url: "https://accounts.spotify.com/api/token",
-            //    form: {
-            //       code: code,
-            //       redirect_uri: redirect_uri,
-            //       grant_type: "authorization_code",
-            //    },
-            //    headers: {
-            //       "content-type": "application/x-www-form-urlencoded",
-            //       Authorization:
-            //          "Basic " + btoa(CLIENT_ID + ":" + CLIENT_SECRET),
-            //    },
-            //    json: true,
-            // };
-            // console.log("authOptions", authOptions);
-         }
+         loginProcess.exchangeForToken();
       }
    }, []);
 

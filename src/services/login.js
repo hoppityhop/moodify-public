@@ -45,7 +45,7 @@ function generateRandomString(length) {
    return result;
 }
 
-function exchangeForToken() {
+async function exchangeForToken() {
    let params = new URLSearchParams(window.location.search);
 
    var code = params.get("code");
@@ -53,7 +53,7 @@ function exchangeForToken() {
    console.log("code", code);
    console.log("state", state);
 
-   fetch("https://accounts.spotify.com/api/token", {
+   var exchangeResults = await fetch("https://accounts.spotify.com/api/token", {
       method: "POST",
       headers: {
          "Content-Type": "application/x-www-form-urlencoded",
@@ -68,6 +68,9 @@ function exchangeForToken() {
       .then((response) => response.json())
       .then((data) => console.log(data))
       .catch((error) => console.error("Error:", error));
+
+   console.log("exchangeResults", exchangeResults);
+   return exchangeResults;
 }
 
 const loginProcess = {
@@ -77,7 +80,3 @@ const loginProcess = {
 };
 
 export default loginProcess;
-
-// https://accounts.spotify.com/authorize?response_type=token&client_id=d4a40d7f2b794f5ebf8b80bec35da21e&scope=user-read-private&redirect_uri=http://localhost:3000
-
-// export default login;
