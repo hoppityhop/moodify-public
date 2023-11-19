@@ -1,0 +1,5 @@
+https://accounts.spotify.com/authorize?
+
+client_id = d4a40d7f2b794f5ebf8b80bec35da21e
+
+scopes = 'user-read-private user-read-email playlist-modify-private user-library-read'
